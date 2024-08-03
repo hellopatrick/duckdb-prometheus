@@ -1,0 +1,23 @@
+# name: test/sql/prometheus.test
+# description: test prometheus extension
+# group: [prometheus]
+
+# Before we load the extension, this will fail
+statement error
+SELECT prometheus('Sam');
+----
+Catalog Error: Scalar Function with name prometheus does not exist!
+
+# Require statement will ensure this test is run with this extension loaded
+require prometheus
+
+# Confirm the extension works
+query I
+SELECT prometheus('Sam');
+----
+Prometheus Sam 🐥
+
+query I
+SELECT prometheus_openssl_version('Michael');
+----
+<REGEX>:Prometheus Michael, my linked OpenSSL version is OpenSSL.*
