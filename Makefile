@@ -7,7 +7,7 @@ EXT_CONFIG=${PROJ_DIR}extension_config.cmake
 # Include the Makefile from extension-ci-tools
 include extension-ci-tools/makefiles/duckdb_extension.Makefile
 
-.PHONY: lint
-lint:
+.PHONY: fmt
+fmt:
 	clang-format -i src/*.cpp
 	clang-format -i src/include/*.hpp

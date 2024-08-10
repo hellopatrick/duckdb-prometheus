@@ -12,7 +12,11 @@ set(EXTENSION_NAME ${TARGET_NAME}_extension)
 set(LOADABLE_EXTENSION_NAME ${TARGET_NAME}_loadable_extension)
 
 project(${TARGET_NAME})
-include_directories(src/include)
+include_directories(
+    src/include
+    ./duckdb/third_party/httplib
+    ./duckdb/third_party/yyjson
+)
 
 set(EXTENSION_SOURCES src/prometheus_extension.cpp)
 
